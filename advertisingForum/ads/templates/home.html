@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row">
+    <div class="ads-row">
+        {% for ad in ads %}
+        <div class="ad-col"></div>
+            <a href="{% url "detail" ad.id %}">
+                <div class ="ad-box">
+                    <span>{{ad.display_industry}}</span>
+                    <div class ="info-row">
+                        <div class="info-col big">
+                            <h2>{{ad.company}}</h2>
+                            <p class="desc">{{ad.desc|truncatechars:100}}</p>
+                            <p class="small-info"><ion-icon name="location-outline"></ion-icon>{{ad.adress}}</p>  
+
+                        </div>
+                    </div>
+                    <div class="info-col">
+                        <p class="small-info"><ion-icon name="call-outline"></ion-icon>{{ad.phone}}</p>
+                        <p class="small-info"><ion-icon name="mail-outline"></ion-icon>{{ad.email}}</p>
+                        <p class="small-info">
+                            {% if ad.is_liked %}
+                            <ion-icon name="thumbs-up"></ion-icon>{{ad.total_likes}}
+                            
+                            {% else %}
+                            <ion-icon name="thumbs-up-outline"></ion-icon>{{ad.total_likes}}
+                            {% endif %}
+                            
+                            
+                        </p>
+                    </div>
+                </div>
+            
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

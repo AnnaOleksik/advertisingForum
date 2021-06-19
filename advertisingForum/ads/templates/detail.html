@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+    <div class="ad-box" id="detail">
+        <div class="info-line">
+            <div class="info-data">
+                <p class="small-info"><ion-icon name="location-outline"></ion-icon>{{ad.adress}}</p> 
+                <p class="small-info">
+                    {% if ad.is_liked %}
+                    <a href="{% url "like" ad.id %}"><ion-icon name="thumbs-up"></ion-icon></a>{{ad.total_likes}}
+                    {% else %}
+                    <a href="{% url "like" ad.id %}"><ion-icon name="thumbs-up-outline"></ion-icon></a>{{ad.total_likes}}
+                    {% endif %}
+                </p>
+                   
+            </div>
+            <div class="info-data">
+                <p class="small-info"><ion-icon name="call-outline"></ion-icon>{{ad.phone}}</p>
+                <p class="small-info"><ion-icon name="mail-outline"></ion-icon>{{ad.email}}</p>
+            </div>
+        </div>
+        <div class="main-box">
+            <p class="industry">{{ad.display_industry}}</p>
+            <h2>{{ad.company}}</h2>
+            <div class="desc-row">
+                <p><ion-icon name="document-text-outline"></ion-icon></p>
+                <p>{{ad.desc}}</p>
+            </div>
+        </div>
+        
+    </div>
+</div>
+{% endblock content %}

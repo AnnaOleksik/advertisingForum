@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row thin">
+    <h2 class="form-title">Log in</h2>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">A simple danger alert—check it out!</div>
+    {% endif %}
+    <form class ="create-form" action="{% url "log" %}" method="POST">
+        <label for="id_username">Username</label>
+        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150" required="" id="id_username">
+        <label for="id_password">Password</label>
+        <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+        <p>Don't have an account?<a class="login-link" href="{% url "register" %}">Register</a></p>
+        {% csrf_token %}
+        <button class="btn-full" type="submit">Login</button>
+    </form>
+</div>
+{% endblock content %}
+ 
+
+

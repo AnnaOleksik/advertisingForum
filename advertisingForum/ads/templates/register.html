@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="row thin">
+    <h2 class="form-title">Create account</h2>
+    {% if error %}
+    <div class="alert alert-danger" role="alert">{{error}}</div>
+    {% endif %}
+    
+    <form class="create-form" action="{% url "register" %}" method="POST">
+        <label for="id_username">Username</label>
+        <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+        <label for="id_password1">Password</label>
+        <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+        <label for="id_password2">Confirm password</label>
+        <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+        <p>Already have an account?<a class="login-link" href="{% url "log" %}">Log in</a></p>
+        {% csrf_token %}
+        <button class="btn-full" type="submit">Register</button>
+    </form>
+
+</div>
+
+
+{% endblock content %}
+
+
+
+<form action="{% url "register" %}" method="POST">
+    <label for="id_username">Username</label>
+    <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" required="" id="id_username">
+    <label for="id_password1">Password</label>
+    <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+    <label for="id_password2">Confirm password</label>
+    <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+    {% csrf_token %}
+    <button type="submit">Register</button>
+</form>
+
